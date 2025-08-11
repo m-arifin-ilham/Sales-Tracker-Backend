@@ -119,7 +119,7 @@ A comprehensive test script is included to validate the API's functionality and 
 
 1. Ensure your Node.js dependencies are installed.
 
-2. Ensure your Product Catalog API is running on http://localhost:8000/api/ and has a product with the ID specified in test_api.py (e.g., TEST_PRODUCT_ID = 1) with sufficient stock.
+2. Ensure your Product Catalog API is running on `http://localhost:8000/api/` and has a product with the ID specified in test_api.py (e.g., `TEST_PRODUCT_ID = 1`) with sufficient stock.
 
 3.  Run the tests:
 
