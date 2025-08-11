@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.env
+.idea/ # For PyCharm users
+.vscode/ # For VS Code users
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Flask/Django specific
+instance/
+.flaskenv
+*.log
