@@ -28,8 +28,8 @@ This API serves as the data source for a frontend application (e.g., the [React-
     * Retrieves a list of all recorded sales, ordered by date.
 * **Sales Record Retrieval by ID (`GET /sales/{id}`):**
     * Fetches details for a specific sales record.
+* **Secure Inter-API Communication:** Authenticates requests to the Product Catalog API by sending a valid API Key.
 * **CORS Enabled:** Configured with `Flask-CORS` to allow cross-origin requests from frontend applications.
-
 ---
 
 ## Architectural Design
@@ -85,10 +85,11 @@ Follow these instructions to set up and run the project locally.
     ```
 
 4.  **Configure environment variables:**
-    Create a file named `.env` in the project root with the following content. **Ensure this URL points to your actual running Product Catalog API.**
+    Create a file named `.env` in the project root with the following content. **Ensure `PRODUCT_CATALOG_API_URL` points to your running Django Product Catalog API, and `PRODUCT_CATALOG_API_KEY` is the key generated from Django Admin.**
 
     ```
     PRODUCT_CATALOG_API_URL='[http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)'
+    PRODUCT_CATALOG_API_KEY='your_copied_api_key_string_here' # <<< Paste the key from Django Admin here!
     ```
 
 5.  **Initialize the database:**
@@ -108,22 +109,21 @@ Ensure your virtual environment is active, then run the Flask application:
 # On macOS/Linux: export FLASK_APP=app.py
 
 # Start the development server:
-flask run
+flask run --port 5001
 ```
 
-The API will be accessible at `http://127.0.0.1:5000`.
+The API will be accessible at `http://127.0.0.1:5001`.
 
 ## How to Run Tests
 
 A comprehensive test script is included to validate the API's functionality and its integration with the Product Catalog API.
 
-1. Ensure your Node.js dependencies are installed.
+1.  Ensure your **Django Product Catalog API** is running on `http://localhost:8000/api/` and has a product with the ID specified in `test_api.py` (e.g., `TEST_PRODUCT_ID = 1`) with sufficient stock.
 
-2. Ensure your Product Catalog API is running on `http://localhost:8000/api/` and has a product with the ID specified in test_api.py (e.g., `TEST_PRODUCT_ID = 1`) with sufficient stock.
+2.  **Crucially, ensure your `PRODUCT_CATALOG_API_KEY` is correctly set in your `.env` file** for this project, as the backend will use it to authenticate with the Product Catalog API.
 
 3.  Run the tests:
-
-    ```Bash
+    ```bash
     python test_api.py
     ```
 
@@ -142,6 +142,8 @@ A comprehensive test script is included to validate the API's functionality and 
 ## License
 
 This project is licensed under the MIT License.
+
+---
 
 *Developed by [Muhammad Arifin Ilham](https://www.linkedin.com/in/arifin-ilham-at-ska/)*
 
